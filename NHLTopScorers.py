@@ -17,7 +17,6 @@ def main():
 # Pull the statistics of the top scorers in the league.
 # maxRank dictates what rank in the points standings to display up to (max 50).
 def getTopScorers(players, pointsAll, maxRank):
-
 	index = 0
 
 	for player in players:
