@@ -1,11 +1,16 @@
 import requests
+import datetime
 import re
 from bs4 import BeautifulSoup
 
 def main():
 	maxRank = int(input("Display up to what rank? (max 50): "))
 
-	page = requests.get('https://www.foxsports.com/nhl/stats?season=2018&category=SCORING&time=0')
+	now = datetime.datetime.now()
+	year = str(now.year)
+	url = 'https://www.foxsports.com/nhl/stats?season=' + year + '&category=SCORING&time=0'
+
+	page = requests.get(url)
 	soup = BeautifulSoup(page.content, 'html.parser')
 
 	players = soup.find_all(class_="wisbb_playerContainer")
@@ -47,7 +52,7 @@ def getTopScorers(players, pointsAll, maxRank):
 # Formats and prints statistics.
 def printFmt(rank, name, team, points):
 
-	if len(name) > 11:
+	if len(name) > 12:
 		print("{}: {}	[{}]	{} pts".format(rank, name, team, points))
 	else:
 		print("{}: {}		[{}]	{} pts".format(rank, name, team, points))
