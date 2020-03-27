@@ -52,7 +52,7 @@ def getTopScorers(players, pointsAll, maxRank):
 # Formats and prints statistics.
 def printFmt(rank, name, team, points):
 
-	if len(name) > 12:
+	if len(name) > 11:
 		print("{}: {}	[{}]	{} pts".format(rank, name, team, points))
 	else:
 		print("{}: {}		[{}]	{} pts".format(rank, name, team, points))
